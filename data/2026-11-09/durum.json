@@ -1,11 +1,12 @@
 {
   "isler": {
     "pz-tablet": {
-      "tamam": false
+      "tamam": true,
+      "zaman": "2026-11-10T15:51:12.793Z"
     },
     "pz-fen": {
       "tamam": false
     }
   },
-  "guncelleme": "2026-11-10T15:51:09.329Z"
+  "guncelleme": "2026-11-10T15:51:13.255Z"
 }
