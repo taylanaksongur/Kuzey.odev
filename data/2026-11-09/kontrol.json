@@ -19,6 +19,26 @@
       ],
       "foto": "pz-fen__20261110-194654.jpg",
       "tarih": "2026-11-10T19:55:00+03:00"
+    },
+    "pt-ing-pb": {
+      "durum": "duzelt",
+      "not": "Syf. 19'daki 10. alıştırmada çok hata var. Önce kuralı hatırla: tek şey ya da sayılamayan şey için 'is / isn't', çok şey için 'are / aren't'. Olumlu cümlede 'some', olumsuz cümlede ve soruda 'any'. Ayrıca fotoğrafta 18. sayfanın sol yarısı ve 19. sayfanın altı görünmüyor. Düzelttikten sonra iki sayfayı da tam görünecek şekilde tekrar çek.",
+      "hatalar": [
+        "Syf. 19, 10/1: 'There ___ a lot of food' → 'is' olmalı (sen 'are' yazmışsın).",
+        "Syf. 19, 10/2: 'There ___ some eggs' → 'are' olmalı (sen 'is' yazmışsın).",
+        "Syf. 19, 10/4: 'There ___ a lot of people' → 'are' olmalı (sen 'any' yazmışsın).",
+        "Syf. 19, 10/7: 'there ___ some yogurt' → 'is' olmalı. 'some' zaten yazıyor, iki kere 'some' olmaz.",
+        "Syf. 19, 10/8: 'There ___ any bread' → 'isn't' olmalı (sen 'are' yazmışsın).",
+        "Syf. 19, 10/9: 'There isn't ___ chicken' → 'any' olmalı (sen 'is' yazmışsın).",
+        "Syf. 19, 10/10: 'there ___ some beef' → 'is' olmalı (sen 'isn't' yazmışsın).",
+        "Syf. 19, 10/11: 'there ___ any bread at home' → 'isn't' olmalı.",
+        "Syf. 19, 10/12: 'Do you have ___ ideas?' → 'any' olmalı (sen 'aren't' yazmışsın).",
+        "Syf. 19, 11: 'There is 2 bananas' yanlış. İki muz çok olduğu için 'There are 2 bananas' olmalı.",
+        "Syf. 18: 5. ve 7. sorular soru cümlesi, bu yüzden 'some' değil 'any' daire içine alınmalı ('Are there any vegetables…?', 'Is there any soup…?').",
+        "Syf. 18, sıralama: 'there is some bred' → 'There is some bread.' (büyük T ve 'bread' yazımı)."
+      ],
+      "foto": "pt-ing-pb__20261110-202009.jpg",
+      "tarih": "2026-11-10T20:40:00+03:00"
     }
   }
 }
