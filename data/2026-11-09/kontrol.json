@@ -2,10 +2,23 @@
   "isler": {
     "pz-turkce": {
       "durum": "duzelt",
-      "not": "Fotoğrafta ödev sayfası görünmüyor (koltuk ve kumanda çıkmış). Başarıyorum 1, syf. 91'in fotoğrafını sayfa tam görünecek şekilde tekrar çek.",
+      "not": "Fotoğraf hâlâ yok (eski fotoğraf silindi, yenisi yüklenmedi). Başarıyorum 1, syf. 91'in fotoğrafını sayfa tam görünecek şekilde çekip yükle.",
       "hatalar": [],
-      "foto": "pz-turkce__20261110-185139.jpg",
-      "tarih": "2026-11-10T18:55:00+03:00"
+      "tarih": "2026-11-10T19:55:00+03:00"
+    },
+    "pz-fen": {
+      "durum": "duzelt",
+      "not": "Syf. 44 çok güzel, hepsi doğru. Syf. 45'teki eşleştirmede birkaç eksik ve yanlış var.",
+      "hatalar": [
+        "Syf. 45, 3. soru: Makarnalar hiçbir yere bağlanmamış. Karbonhidrat'a bağla.",
+        "Syf. 45, 3. soru: Ekmekler hiçbir yere bağlanmamış. Karbonhidrat'a bağla.",
+        "Syf. 45, 3. soru: Domatesler Karbonhidrat'a bağlanmış gibi görünüyor. Domates sebze, Vitamin olmalı.",
+        "Syf. 45, 3. soru: Üzümler Karbonhidrat'a bağlanmış. Meyveler bu soruda Vitamin'e gider.",
+        "Syf. 45, 3. soru: Balık ve limon çizgileri birbirinin üstünden geçiyor, hangisi nereye gidiyor anlaşılmıyor. Balık Protein'e, limon Vitamin'e gitmeli, çizgileri netleştir.",
+        "Syf. 44, 2. soru: 'vitamin' kelimesi 'vitanin' gibi okunuyor, m harfini düzgün yaz."
+      ],
+      "foto": "pz-fen__20261110-194654.jpg",
+      "tarih": "2026-11-10T19:55:00+03:00"
     }
   }
 }
