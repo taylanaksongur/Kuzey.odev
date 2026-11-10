@@ -14,5 +14,6 @@ GitHub Pages ile yayınlanan tek sayfalık site (`index.html`). Kuzey (4E, Bahç
 ## Haftalık akış
 1. Cumartesi: okul e-postalarını takvime (Aile) ekle, aynı içerikle yeni `weeks/<pazartesi>.json` oluştur, `weeks/index.json`'da `guncel`'i güncelle ve listeye ekle.
 2. Kontrol: `data/<hafta>/foto/` altındaki yeni fotoğraflara bak, hataları `kontrol.json`'a yaz ve ebeveyne (Taylan) özellikle yanlışları bildir.
+   - **`kontrol.json`'a doğru cevapları asla yazma.** Yalnızca hangi sorunun yanlış ya da eksik olduğunu söyle, gerekirse cevabı vermeyen bir ipucu ya da kural hatırlatması ekle.
 
 Sayfa GitHub API'ye yazmak için cihazda saklanan, yalnızca bu depoya `Contents: Read and write` izni olan fine-grained anahtar kullanır; anahtar depoya asla yazılmaz.

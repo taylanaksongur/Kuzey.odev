@@ -8,34 +8,27 @@
     },
     "pz-fen": {
       "durum": "duzelt",
-      "not": "Syf. 44 çok güzel, hepsi doğru. Syf. 45'teki eşleştirmede birkaç eksik ve yanlış var.",
+      "not": "Syf. 44 çok güzel, hepsi doğru. Syf. 45'teki eşleştirmede birkaç eksik ve yanlış var. Her besinin içinde en çok ne bulunduğunu düşün.",
       "hatalar": [
-        "Syf. 45, 3. soru: Makarnalar hiçbir yere bağlanmamış. Karbonhidrat'a bağla.",
-        "Syf. 45, 3. soru: Ekmekler hiçbir yere bağlanmamış. Karbonhidrat'a bağla.",
-        "Syf. 45, 3. soru: Domatesler Karbonhidrat'a bağlanmış gibi görünüyor. Domates sebze, Vitamin olmalı.",
-        "Syf. 45, 3. soru: Üzümler Karbonhidrat'a bağlanmış. Meyveler bu soruda Vitamin'e gider.",
-        "Syf. 45, 3. soru: Balık ve limon çizgileri birbirinin üstünden geçiyor, hangisi nereye gidiyor anlaşılmıyor. Balık Protein'e, limon Vitamin'e gitmeli, çizgileri netleştir.",
-        "Syf. 44, 2. soru: 'vitamin' kelimesi 'vitanin' gibi okunuyor, m harfini düzgün yaz."
+        "Syf. 45, 3. soru: Makarnalar hiçbir yere bağlanmamış.",
+        "Syf. 45, 3. soru: Ekmekler hiçbir yere bağlanmamış.",
+        "Syf. 45, 3. soru: Domatesin bağlantısı yanlış, tekrar düşün.",
+        "Syf. 45, 3. soru: Üzümün bağlantısını tekrar düşün. Meyve ve sebzelerde en çok ne var?",
+        "Syf. 45, 3. soru: Balık ve limon çizgileri birbirinin üstünden geçiyor, hangisinin nereye gittiği anlaşılmıyor. Çizgileri netleştir.",
+        "Syf. 44, 2. soru: Bir kelimenin yazısı 'vitanin' gibi okunuyor, harflerini kontrol et."
       ],
       "foto": "pz-fen__20261110-194654.jpg",
       "tarih": "2026-11-10T19:55:00+03:00"
     },
     "pt-ing-pb": {
       "durum": "duzelt",
-      "not": "Syf. 19'daki 10. alıştırmada çok hata var. Önce kuralı hatırla: tek şey ya da sayılamayan şey için 'is / isn't', çok şey için 'are / aren't'. Olumlu cümlede 'some', olumsuz cümlede ve soruda 'any'. Ayrıca fotoğrafta 18. sayfanın sol yarısı ve 19. sayfanın altı görünmüyor. Düzelttikten sonra iki sayfayı da tam görünecek şekilde tekrar çek.",
+      "not": "Syf. 19'daki 10. alıştırmada çok hata var. Önce kuralı hatırla: tek bir şey ya da sayılamayan şey için 'is / isn't', birden çok şey için 'are / aren't' kullanılır. Olumlu cümlede 'some', olumsuz cümlede ve soruda 'any' kullanılır. Boşluktan sonra gelen kelimeye bak. Ayrıca fotoğrafta 18. sayfanın sol yarısı ve 19. sayfanın altı görünmüyor. Düzelttikten sonra iki sayfayı da tam görünecek şekilde tekrar çek.",
       "hatalar": [
-        "Syf. 19, 10/1: 'There ___ a lot of food' → 'is' olmalı (sen 'are' yazmışsın).",
-        "Syf. 19, 10/2: 'There ___ some eggs' → 'are' olmalı (sen 'is' yazmışsın).",
-        "Syf. 19, 10/4: 'There ___ a lot of people' → 'are' olmalı (sen 'any' yazmışsın).",
-        "Syf. 19, 10/7: 'there ___ some yogurt' → 'is' olmalı. 'some' zaten yazıyor, iki kere 'some' olmaz.",
-        "Syf. 19, 10/8: 'There ___ any bread' → 'isn't' olmalı (sen 'are' yazmışsın).",
-        "Syf. 19, 10/9: 'There isn't ___ chicken' → 'any' olmalı (sen 'is' yazmışsın).",
-        "Syf. 19, 10/10: 'there ___ some beef' → 'is' olmalı (sen 'isn't' yazmışsın).",
-        "Syf. 19, 10/11: 'there ___ any bread at home' → 'isn't' olmalı.",
-        "Syf. 19, 10/12: 'Do you have ___ ideas?' → 'any' olmalı (sen 'aren't' yazmışsın).",
-        "Syf. 19, 11: 'There is 2 bananas' yanlış. İki muz çok olduğu için 'There are 2 bananas' olmalı.",
-        "Syf. 18: 5. ve 7. sorular soru cümlesi, bu yüzden 'some' değil 'any' daire içine alınmalı ('Are there any vegetables…?', 'Is there any soup…?').",
-        "Syf. 18, sıralama: 'there is some bred' → 'There is some bread.' (büyük T ve 'bread' yazımı)."
+        "Syf. 19, 10. alıştırma: 1, 2, 4, 7, 8, 9, 10, 11 ve 12 numaralı boşluklar yanlış. Tekrar dene.",
+        "Syf. 19, 10/7: Boşluktan sonra zaten 'some' yazıyor, ona dikkat et.",
+        "Syf. 19, 11. alıştırma: 'There is 2 bananas' cümlesini kontrol et. Kaç tane muz var?",
+        "Syf. 18: 5. ve 7. sorular soru cümlesi. Soruda 'some' mı kullanılır, 'any' mi?",
+        "Syf. 18, sıralama: 'there is some bred' cümlesinde bir yazım hatası var. Cümlenin ilk harfine de dikkat et."
       ],
       "foto": "pt-ing-pb__20261110-202009.jpg",
       "tarih": "2026-11-10T20:40:00+03:00"
