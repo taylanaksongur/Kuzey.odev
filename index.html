@@ -100,6 +100,12 @@ dialog::backdrop{background:#1c233199}
 .dlg .row{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
 .status{font-weight:800;font-size:14px;margin-top:8px;min-height:20px}
 .status.ok{color:var(--ok)} .status.err{color:var(--bad)}
+.share{margin-top:14px;padding-top:14px;border-top:2px solid var(--line)}
+.share h4{margin:0;font-size:17px}
+.qr{margin-top:10px;width:212px;padding:6px;background:#fff;border-radius:12px;border:2px solid var(--line)}
+.qr img,.qr canvas{display:block;width:200px!important;height:200px!important}
+.warn{font-size:13px!important;color:#8f2d25!important;font-weight:700}
+.dlg{max-height:calc(100vh - 40px);overflow:auto}
 
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:14px;font-weight:800;transition:transform .25s;z-index:20;max-width:calc(100vw - 32px);visibility:hidden}
 .toast.show{transform:translateX(-50%) translateY(0);visibility:visible}
@@ -147,6 +153,16 @@ dialog::backdrop{background:#1c233199}
     <p>İşaretlerin ve fotoğrafların kaydedilmesi için bu cihaza bir kez GitHub anahtarı girilir. Anahtar yalnızca bu cihazda saklanır.</p>
     <input id="tokenInput" type="password" placeholder="github_pat_..." autocomplete="off" spellcheck="false">
     <div class="status" id="tokenStatus"></div>
+    <div class="share" id="shareBox" hidden>
+      <h4>Başka cihaza aktar</h4>
+      <p>Tablette veya bilgisayarda bu QR kodunu kamerayla okut ya da bağlantıyı gönder. Açılınca anahtar o cihaza kendiliğinden kaydedilir.</p>
+      <div class="qr" id="qr"></div>
+      <div class="row" style="justify-content:flex-start;margin-top:10px">
+        <button class="btn photo" id="shareLink">📤 Bağlantıyı gönder</button>
+        <button class="btn photo" id="copyLink">📋 Kopyala</button>
+      </div>
+      <p class="warn">Bu bağlantı anahtarı içerir, sadece aile cihazlarına gönder.</p>
+    </div>
     <div class="row">
       <button class="btn undo" id="tokenClear">Anahtarı sil</button>
       <button class="btn undo" id="tokenClose">Kapat</button>
@@ -157,6 +173,7 @@ dialog::backdrop{background:#1c233199}
 
 <div class="toast" id="toast"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 (() => {
   const OWNER = 'taylanaksongur', REPO = 'kuzey.odev', BRANCH = 'main';
@@ -386,7 +403,26 @@ dialog::backdrop{background:#1c233199}
   $('#file').addEventListener('change', e => { const f = e.target.files[0]; if (f && pendingTask) uploadPhoto(pendingTask, f); });
 
   // ---------- settings ----------
-  function openSettings(){ $('#tokenInput').value = token; $('#tokenStatus').textContent=''; $('#settings').showModal(); }
+  const setupLink = () => `${location.origin}${location.pathname}#anahtar=${encodeURIComponent(token)}`;
+  function renderShare() {
+    const box = $('#shareBox'); box.hidden = !token;
+    const q = $('#qr'); q.innerHTML = '';
+    if (token && window.QRCode) new QRCode(q, { text: setupLink(), width: 200, height: 200, correctLevel: QRCode.CorrectLevel.L });
+  }
+  $('#shareLink').onclick = async () => {
+    if (navigator.share) { try { await navigator.share({ title:"Kuzey'in Haftası – kurulum", url: setupLink() }); } catch {} }
+    else $('#copyLink').click();
+  };
+  $('#copyLink').onclick = async () => {
+    try { await navigator.clipboard.writeText(setupLink()); toast('Bağlantı kopyalandı'); } catch { toast('Kopyalanamadı', true); }
+  };
+  async function checkToken(v) {
+    const r = await fetch(API, { headers:{ Authorization:`Bearer ${v}`, Accept:'application/vnd.github+json' } });
+    if (!r.ok) return 'gecersiz';
+    const j = await r.json();
+    return j.permissions?.push ? 'tamam' : 'izinsiz';
+  }
+  function openSettings(){ $('#tokenInput').value = token; $('#tokenStatus').textContent=''; renderShare(); $('#settings').showModal(); }
   $('#gear').onclick = openSettings; $('#noticeBtn').onclick = openSettings;
   $('#tokenClose').onclick = () => $('#settings').close();
   $('#tokenClear').onclick = () => { token=''; store.del(TOKEN_KEY); $('#tokenInput').value=''; $('#tokenStatus').textContent='Anahtar silindi.'; $('#tokenStatus').className='status'; render(); };
@@ -395,17 +431,29 @@ dialog::backdrop{background:#1c233199}
     if (!v) { st.textContent='Anahtar boş.'; st.className='status err'; return; }
     st.textContent='Deneniyor…'; st.className='status';
     try {
-      const r = await fetch(API, { headers:{ Authorization:`Bearer ${v}`, Accept:'application/vnd.github+json' } });
-      const j = await r.json();
-      if (!r.ok) throw new Error();
-      if (!j.permissions?.push) { st.textContent='Anahtar çalışıyor ama yazma izni yok. "Contents: Read and write" izni verilmeli.'; st.className='status err'; return; }
-      token = v; store.set(TOKEN_KEY, v); st.textContent='Tamam! Bu cihaz artık kaydedebilir.'; st.className='status ok'; render();
-      setTimeout(()=>$('#settings').close(), 900);
-    } catch { st.textContent='Anahtar geçersiz ya da bu depoya erişimi yok.'; st.className='status err'; }
+      const res = await checkToken(v);
+      if (res === 'gecersiz') throw new Error();
+      if (res === 'izinsiz') { st.textContent='Anahtar çalışıyor ama yazma izni yok. "Contents: Read and write" izni verilmeli.'; st.className='status err'; return; }
+      token = v; store.set(TOKEN_KEY, v); st.textContent='Tamam! Bu cihaz artık kaydedebilir. Diğer cihazlar için aşağıdaki QR kodunu kullanabilirsin.'; st.className='status ok'; render(); renderShare();
+    } catch { st.textContent='Anahtar geçersiz, süresi dolmuş ya da bu depoya erişimi yok.'; st.className='status err'; }
   };
+
+  // kurulum bağlantısı: #anahtar=...
+  async function setupFromLink() {
+    const m = location.hash.match(/^#anahtar=(.+)$/);
+    if (!m) return;
+    const v = decodeURIComponent(m[1]).trim();
+    history.replaceState(null, '', location.pathname + location.search);
+    try {
+      const res = await checkToken(v);
+      if (res === 'tamam') { token = v; store.set(TOKEN_KEY, v); toast('Bu cihaz kuruldu, artık kaydedebilir ✓'); }
+      else toast(res === 'izinsiz' ? 'Bağlantıdaki anahtarın yazma izni yok' : 'Bağlantıdaki anahtar geçersiz ya da süresi dolmuş', true);
+    } catch { toast('Kurulum bağlantısı denenemedi, internet bağlantını kontrol et', true); }
+  }
 
   // ---------- boot ----------
   (async () => {
+    await setupFromLink();
     try {
       const idx = await loadIndex();
       const sel = $('#weekpick');
