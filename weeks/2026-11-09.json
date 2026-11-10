@@ -1,0 +1,77 @@
+{
+  "hafta": "2026-11-09",
+  "baslik": "9 – 13 Kasım",
+  "kaynak": "Rübeyda Adak – 4. Sınıf 9-13 Kasım Haftalık Öğretim Takvimi; Nazlı Akpınar – Online demo sınavı; Esra Ersal – Matematik hafta sonu ödevi",
+  "gunler": [
+    {
+      "id": "pazar",
+      "ad": "Pazar",
+      "tarih": "2026-11-08",
+      "icin": "Pazartesi",
+      "isler": [
+        { "id": "pz-turkce", "tur": "odev", "ders": "Türkçe", "baslik": "Başarıyorum 1 – syf. 91", "detay": "Yardımcı Eğitim Materyali 1", "foto": true },
+        { "id": "pz-fen", "tur": "odev", "ders": "Fen Bilimleri", "baslik": "Başarıyorum 1 – syf. 44-45", "detay": "Yardımcı Eğitim Materyali 1", "foto": true },
+        { "id": "pz-tablet", "tur": "getir", "ders": "İngilizce", "baslik": "Tablet + kulaklık + STOYS şifresi", "detay": "Pazartesi İngilizce online demo sınavı var (puanlanmaz, prova)." }
+      ]
+    },
+    {
+      "id": "pazartesi",
+      "ad": "Pazartesi",
+      "tarih": "2026-11-09",
+      "icin": "Salı",
+      "isler": [
+        { "id": "pt-ing-pb", "tur": "odev", "ders": "İngilizce", "baslik": "Practice Book – syf. 18-19", "foto": true },
+        { "id": "pt-ing-hl", "tur": "okuma", "ders": "İngilizce", "baslik": "Highlights: It's Laundry Day, Pinata Party" },
+        { "id": "pt-mat-eksik", "tur": "odev", "ders": "Matematik", "baslik": "Hafta sonu ödevinin eksikleri", "detay": "Sayfada \"Tamamlayalım\" yazan kısımları tamamla (Esra Öğretmen'in notu).", "foto": true }
+      ]
+    },
+    {
+      "id": "sali",
+      "ad": "Salı",
+      "tarih": "2026-11-10",
+      "icin": "Çarşamba",
+      "bosNot": "Yarın için özel ödev yok. Perşembe ödevleri uzun, bugünden başlayabilirsin.",
+      "isler": []
+    },
+    {
+      "id": "carsamba",
+      "ad": "Çarşamba",
+      "tarih": "2026-11-11",
+      "icin": "Perşembe",
+      "isler": [
+        { "id": "ca-mat-pc", "tur": "odev", "ders": "Matematik", "baslik": "Problem Çözme – syf. 16", "foto": true },
+        { "id": "ca-mat-bas", "tur": "odev", "ders": "Matematik", "baslik": "Başarıyorum 1 – syf. 53 ve 56", "foto": true },
+        { "id": "ca-sosyal", "tur": "odev", "ders": "Sosyal Bilgiler", "baslik": "Yardımcı Eğitim Materyali 1 – syf. 58-63", "foto": true },
+        { "id": "ca-tablet", "tur": "getir", "ders": "Kodlama ve Robotik", "baslik": "Tablet", "detay": "Perşembe 1-2. ders: LEGO SPIKE Essential ile motor kullanımı." }
+      ]
+    },
+    {
+      "id": "persembe",
+      "ad": "Perşembe",
+      "tarih": "2026-11-12",
+      "icin": "Cuma",
+      "isler": [
+        { "id": "pe-gorsel", "tur": "getir", "ders": "Görsel Sanatlar", "baslik": "Resim malzemeleri", "detay": "Sulu boya, fırça, su kabı, önlük, peçete, çeşitli kalınlıkta ipler. Henüz götürmediysen 35x50 resim defteri." }
+      ]
+    },
+    {
+      "id": "haftasonu",
+      "ad": "Hafta sonu",
+      "tarih": "2026-11-14",
+      "tarihBitis": "2026-11-15",
+      "icin": "Pazartesi",
+      "isler": [
+        { "id": "hs-ev9", "tur": "odev", "ders": "Karma", "baslik": "Ev Çalışması 9", "detay": "Türkçe, Fen, Matematik, Sosyal Bilgiler", "foto": true },
+        { "id": "hs-mat-db", "tur": "odev", "ders": "Matematik", "baslik": "Düşünme Becerileri – syf. 7", "foto": true },
+        { "id": "hs-mat-pc", "tur": "odev", "ders": "Matematik", "baslik": "Problem Çözme – syf. 17 ve 18", "foto": true },
+        { "id": "hs-ing-ww", "tur": "odev", "ders": "İngilizce", "baslik": "Weekend Worksheet 9", "foto": true },
+        { "id": "hs-ing-hl", "tur": "okuma", "ders": "İngilizce", "baslik": "Highlights: A Cat's Tale, The Town Mouse and the Country Mouse, Real Robots" }
+      ]
+    }
+  ],
+  "haftaBoyu": [
+    { "id": "hb-fen", "tur": "odev", "ders": "Fen Bilimleri", "baslik": "Metodbox – KTT testleri", "detay": "Öğrenme Araçları > Morpa Kampüs > Fen Bilimleri > Besinlerimiz > Besinler ve Özellikleri / Canlı Hayatı ve Besinler" },
+    { "id": "hb-almanca", "tur": "odev", "ders": "Almanca", "baslik": "KidzWonder HA.6", "foto": true },
+    { "id": "hb-kitap", "tur": "okuma", "ders": "Okuma", "baslik": "Bir Öğretmenin Kaleminden Atatürk" }
+  ]
+}

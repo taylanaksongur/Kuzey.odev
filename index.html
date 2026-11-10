@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kuzey'in Haftası</title>
+<meta name="theme-color" content="#1d3557">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f1ea; --card:#fffdf8; --ink:#1c2331; --muted:#6b7280; --line:#e6e0d4;
+  --navy:#1d3557; --sky:#4f8fd6; --ok:#2f9e5b; --ok-bg:#e3f4ea; --warn:#d9822b; --warn-bg:#fdf0e1;
+  --bad:#c8463b; --bad-bg:#fbe7e5; --today:#ffd166;
+  --c-turkce:#c8463b; --c-mat:#2f6fd6; --c-fen:#2f9e5b; --c-sosyal:#a0652b; --c-ing:#7b4fc9;
+  --c-almanca:#d9822b; --c-sanat:#d6487f; --c-kod:#138a8a; --c-okuma:#5b6b82; --c-karma:#1d3557;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;font-size:17px;line-height:1.4}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px 48px}
+
+header{background:var(--navy);color:#fff;padding:18px 0 22px;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;right:-60px;top:-80px;width:260px;height:260px;border-radius:50%;background:#26446c}
+header .wrap{position:relative;z-index:1;padding-bottom:0}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hello{font-size:15px;opacity:.8;font-weight:700;letter-spacing:.02em}
+h1{margin:2px 0 0;font-size:30px;font-weight:900;letter-spacing:-.01em}
+.weekpick{background:#ffffff1f;border:0;color:#fff;border-radius:12px;padding:8px 12px;font-weight:800}
+.weekpick option{color:#000}
+.gear{background:#ffffff1f;border:0;color:#fff;width:44px;height:44px;border-radius:12px;font-size:20px;flex:none}
+.progress{margin-top:16px;display:flex;align-items:center;gap:12px}
+.bar{flex:1;height:14px;background:#ffffff26;border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--today);border-radius:99px;transition:width .4s}
+.pct{font-weight:900;font-size:18px;min-width:84px;text-align:right}
+
+.notice{margin:14px 0 0;padding:12px 14px;border-radius:14px;background:var(--warn-bg);color:#7a4310;font-weight:700;font-size:15px;display:none}
+.notice.show{display:block}
+.notice button{background:var(--warn);color:#fff;border:0;border-radius:10px;padding:6px 12px;margin-left:8px;font-weight:800}
+
+.days{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:20px}
+.day{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.day.today{border-color:var(--today);box-shadow:0 0 0 4px #ffd16655}
+.day.past{opacity:.92}
+.dayhead{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.dayname{font-size:22px;font-weight:900}
+.daydate{color:var(--muted);font-weight:700;font-size:14px}
+.forline{font-size:14px;color:var(--muted);font-weight:700;margin-top:-6px}
+.forline b{color:var(--ink)}
+.badge{display:inline-block;font-size:12px;font-weight:900;padding:3px 9px;border-radius:99px;text-transform:uppercase;letter-spacing:.04em}
+.badge.today{background:var(--today);color:#5a4300}
+.badge.done{background:var(--ok-bg);color:var(--ok)}
+.badge.left{background:var(--bad-bg);color:var(--bad)}
+.empty{color:var(--muted);font-weight:700;font-size:15px;padding:10px 12px;background:#f6f3ec;border-radius:12px}
+.section-title{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:4px 0 -2px}
+
+.task{border:2px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px;background:#fff;border-left:7px solid var(--c,var(--karma))}
+.task.done{background:var(--ok-bg);border-color:#bfe3cc;border-left-color:var(--ok)}
+.trow{display:flex;gap:10px;align-items:flex-start}
+.check{flex:none;width:40px;height:40px;border-radius:12px;border:3px solid #c9c1b2;background:#fff;display:grid;place-items:center;font-size:22px;color:#fff;transition:transform .1s}
+.check:active{transform:scale(.92)}
+.task.done .check{background:var(--ok);border-color:var(--ok)}
+.tmain{flex:1;min-width:0}
+.tmeta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.04em}
+.ders{color:var(--c,var(--karma))}
+.kind{color:var(--muted)}
+.kind.getir{color:#fff;background:var(--warn);padding:1px 7px;border-radius:6px}
+.ttitle{font-weight:800;font-size:17px;margin-top:1px}
+.task.done .ttitle{text-decoration:line-through;text-decoration-thickness:2px;opacity:.75}
+.tdetail{font-size:14px;color:var(--muted);margin-top:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:12px;padding:9px 14px;font-weight:800;font-size:15px;display:inline-flex;align-items:center;gap:6px}
+.btn.photo{background:#eef3fb;color:var(--navy)}
+.btn.done{background:var(--ok);color:#fff}
+.btn.undo{background:#efece5;color:var(--muted)}
+.btn[disabled]{opacity:.55;cursor:wait}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap}
+.thumb{position:relative;width:76px;height:76px;border-radius:12px;overflow:hidden;background:#eee;border:2px solid var(--line)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb.up::after{content:"";position:absolute;inset:0;background:#fff8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='9' fill='none' stroke='%231d3557' stroke-width='3' stroke-dasharray='40 20'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 12 12' to='360 12 12' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/svg%3E") center/32px no-repeat}
+.review{border-radius:12px;padding:9px 11px;font-size:14px;font-weight:700}
+.review.tamam{background:var(--ok-bg);color:#1f6b3e}
+.review.duzelt{background:var(--bad-bg);color:#8f2d25}
+.review.bekliyor{background:#f1eee7;color:var(--muted)}
+.review ul{margin:4px 0 0;padding-left:20px;font-weight:600}
+
+.weekly{margin-top:22px;background:var(--card);border:2px dashed #cfc6b4;border-radius:20px;padding:16px}
+.weekly h2{margin:0 0 4px;font-size:20px;font-weight:900}
+.weekly .sub{color:var(--muted);font-size:14px;font-weight:700;margin-bottom:10px}
+.weekly .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+
+dialog{border:0;border-radius:20px;padding:0;max-width:min(520px,calc(100vw - 32px));width:100%;box-shadow:0 20px 60px #0004}
+dialog::backdrop{background:#1c233199}
+.dlg{padding:20px}
+.dlg h3{margin:0 0 6px;font-size:21px}
+.dlg p{margin:6px 0;color:var(--muted);font-size:15px}
+.dlg input{width:100%;font:inherit;font-size:15px;padding:12px;border-radius:12px;border:2px solid var(--line);margin-top:8px}
+.dlg .row{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+.status{font-weight:800;font-size:14px;margin-top:8px;min-height:20px}
+.status.ok{color:var(--ok)} .status.err{color:var(--bad)}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:14px;font-weight:800;transition:transform .25s;z-index:20;max-width:calc(100vw - 32px);visibility:hidden}
+.toast.show{transform:translateX(-50%) translateY(0);visibility:visible}
+.toast.err{background:var(--bad)}
+.foot{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+@media (max-width:520px){h1{font-size:25px}.days{grid-template-columns:1fr}.weekly .list{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="hello">Merhaba Kuzey 👋</div>
+        <h1 id="title">Bu hafta</h1>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <select id="weekpick" class="weekpick" aria-label="Hafta seç"></select>
+        <button class="gear" id="gear" aria-label="Ayarlar">⚙︎</button>
+      </div>
+    </div>
+    <div class="progress">
+      <div class="bar"><i id="barfill"></i></div>
+      <div class="pct" id="pct">0 / 0</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="notice" id="notice">Bu cihazda kayıt anahtarı yok, işaretler ve fotoğraflar kaydedilemez. <button id="noticeBtn">Anahtarı gir</button></div>
+  <div class="days" id="days"></div>
+  <section class="weekly" id="weekly" hidden>
+    <h2>Hafta boyunca</h2>
+    <div class="sub">Bunları hafta bitmeden, istediğin gün yapabilirsin.</div>
+    <div class="list" id="weeklyList"></div>
+  </section>
+  <div class="foot" id="foot"></div>
+</div>
+
+<input type="file" id="file" accept="image/*" capture="environment" hidden>
+
+<dialog id="settings">
+  <div class="dlg">
+    <h3>Kayıt anahtarı</h3>
+    <p>İşaretlerin ve fotoğrafların kaydedilmesi için bu cihaza bir kez GitHub anahtarı girilir. Anahtar yalnızca bu cihazda saklanır.</p>
+    <input id="tokenInput" type="password" placeholder="github_pat_..." autocomplete="off" spellcheck="false">
+    <div class="status" id="tokenStatus"></div>
+    <div class="row">
+      <button class="btn undo" id="tokenClear">Anahtarı sil</button>
+      <button class="btn undo" id="tokenClose">Kapat</button>
+      <button class="btn done" id="tokenSave">Kaydet ve dene</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(() => {
+  const OWNER = 'taylanaksongur', REPO = 'kuzey.odev', BRANCH = 'main';
+  const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
+  const TOKEN_KEY = 'kuzey-odev-token';
+  const DERS_RENK = {
+    'Türkçe':'--c-turkce','Matematik':'--c-mat','Fen Bilimleri':'--c-fen','Sosyal Bilgiler':'--c-sosyal',
+    'İngilizce':'--c-ing','Almanca':'--c-almanca','Görsel Sanatlar':'--c-sanat','Kodlama ve Robotik':'--c-kod',
+    'Okuma':'--c-okuma','Karma':'--c-karma'
+  };
+  const TUR_AD = { odev:'Ödev', getir:'Çantaya koy', okuma:'Okuma', hatirlat:'Hatırlatma' };
+  const AYLAR = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+
+  const $ = s => document.querySelector(s);
+  const store = {
+    get(k){ try { return localStorage.getItem(k); } catch { return null; } },
+    set(k,v){ try { localStorage.setItem(k,v); } catch {} },
+    del(k){ try { localStorage.removeItem(k); } catch {} }
+  };
+  let token = store.get(TOKEN_KEY) || '';
+  let week = null, weekId = null;
+  let durum = { isler:{} }, durumSha = null;
+  let fotolar = {};   // taskId -> [{name,url,local?,uploading?}]
+  let kontrol = { isler:{} };
+  let pendingTask = null;
+
+  // ---------- helpers ----------
+  const todayStr = () => new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Istanbul'}).format(new Date());
+  const fmtDate = (s, e) => {
+    const d = new Date(s+'T12:00:00');
+    if (e) { const d2 = new Date(e+'T12:00:00'); return `${d.getDate()}–${d2.getDate()} ${AYLAR[d2.getMonth()]}`; }
+    return `${d.getDate()} ${AYLAR[d.getMonth()]}`;
+  };
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const b64utf8 = str => { const bytes = new TextEncoder().encode(str); let bin=''; bytes.forEach(b => bin += String.fromCharCode(b)); return btoa(bin); };
+  const utf8b64 = b64 => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\n/g,'')), c => c.charCodeAt(0)));
+  function toast(msg, err){ const t=$('#toast'); t.textContent=msg; t.className='toast show'+(err?' err':''); clearTimeout(t._h); t._h=setTimeout(()=>t.className='toast',2600); }
+
+  async function gh(path, opts={}) {
+    const headers = { 'Accept':'application/vnd.github+json', ...(opts.headers||{}) };
+    if (token) headers.Authorization = `Bearer ${token}`;
+    const r = await fetch(API + path, { ...opts, headers, cache:'no-store' });
+    return r;
+  }
+  async function getJson(path) {
+    const r = await gh(`/contents/${path}?ref=${BRANCH}&t=${Date.now()}`);
+    if (r.status === 404) return { data:null, sha:null };
+    if (!r.ok) throw new Error('okuma ' + r.status);
+    const j = await r.json();
+    return { data: JSON.parse(utf8b64(j.content)), sha: j.sha };
+  }
+  async function putFile(path, b64, message, sha) {
+    const body = { message, content:b64, branch:BRANCH }; if (sha) body.sha = sha;
+    const r = await gh(`/contents/${path}`, { method:'PUT', body:JSON.stringify(body), headers:{'Content-Type':'application/json'} });
+    if (!r.ok) { const e = new Error('yazma ' + r.status); e.status = r.status; throw e; }
+    return r.json();
+  }
+  async function listDir(path) {
+    const r = await gh(`/contents/${path}?ref=${BRANCH}&t=${Date.now()}`);
+    if (!r.ok) return [];
+    const j = await r.json(); return Array.isArray(j) ? j : [];
+  }
+
+  // ---------- data ----------
+  async function loadIndex() {
+    const r = await fetch('weeks/index.json?t=' + Date.now(), { cache:'no-store' });
+    return r.json();
+  }
+  async function loadWeek(id) {
+    weekId = id;
+    const r = await fetch(`weeks/${id}.json?t=${Date.now()}`, { cache:'no-store' });
+    week = await r.json();
+    $('#title').textContent = week.baslik;
+    durum = { isler:{} }; fotolar = {}; kontrol = { isler:{} };
+    render();
+    const [d, k, list] = await Promise.all([
+      getJson(`data/${id}/durum.json`).catch(()=>({data:null,sha:null})),
+      getJson(`data/${id}/kontrol.json`).catch(()=>({data:null})),
+      listDir(`data/${id}/foto`)
+    ]);
+    if (d.data) { durum = d.data; durum.isler ||= {}; }
+    durumSha = d.sha;
+    if (k.data) { kontrol = k.data; kontrol.isler ||= {}; }
+    for (const f of list) {
+      const tid = f.name.split('__')[0];
+      (fotolar[tid] ||= []).push({ name:f.name, url:f.download_url });
+    }
+    for (const t in fotolar) fotolar[t].sort((a,b)=>a.name.localeCompare(b.name));
+    render();
+  }
+
+  function allTasks() {
+    if (!week) return [];
+    return [...week.gunler.flatMap(g => g.isler), ...(week.haftaBoyu||[])];
+  }
+
+  // ---------- render ----------
+  function taskHtml(t) {
+    const done = !!durum.isler[t.id]?.tamam;
+    const color = DERS_RENK[t.ders] || '--c-karma';
+    const photos = fotolar[t.id] || [];
+    const rev = kontrol.isler[t.id];
+    let revHtml = '';
+    if (rev) {
+      const items = (rev.hatalar||[]).map(h => `<li>${esc(h)}</li>`).join('');
+      const head = rev.durum === 'tamam' ? '✅ Kontrol edildi, hepsi doğru!' : rev.durum === 'duzelt' ? '✏️ Düzeltmen gerekenler var:' : '⏳ Kontrol bekliyor';
+      revHtml = `<div class="review ${esc(rev.durum)}">${head}${rev.not ? ' ' + esc(rev.not) : ''}${items ? `<ul>${items}</ul>` : ''}</div>`;
+    } else if (photos.length && done) {
+      revHtml = `<div class="review bekliyor">⏳ Fotoğraf yüklendi, kontrol bekliyor</div>`;
+    }
+    const thumbs = photos.map(p => `<a class="thumb${p.uploading?' up':''}" href="${esc(p.url)}" target="_blank" rel="noopener"><img src="${esc(p.url)}" alt="Ödev fotoğrafı" loading="lazy"></a>`).join('');
+    return `<div class="task${done?' done':''}" style="--c:var(${color})" data-id="${esc(t.id)}">
+      <div class="trow">
+        <button class="check" data-act="toggle" aria-label="${done?'Geri al':'Tamamladım'}">${done?'✓':''}</button>
+        <div class="tmain">
+          <div class="tmeta"><span class="ders">${esc(t.ders)}</span><span class="kind ${esc(t.tur)}">${esc(TUR_AD[t.tur]||'')}</span></div>
+          <div class="ttitle">${esc(t.baslik)}</div>
+          ${t.detay ? `<div class="tdetail">${esc(t.detay)}</div>` : ''}
+        </div>
+      </div>
+      ${photos.length ? `<div class="thumbs">${thumbs}</div>` : ''}
+      ${revHtml}
+      <div class="actions">
+        ${t.foto ? `<button class="btn photo" data-act="photo">📷 ${photos.length ? 'Bir fotoğraf daha' : 'Fotoğraf ekle'}</button>` : ''}
+        ${done ? `<button class="btn undo" data-act="toggle">Geri al</button>` : `<button class="btn done" data-act="toggle">Tamamladım</button>`}
+      </div>
+    </div>`;
+  }
+
+  function render() {
+    if (!week) return;
+    const today = todayStr();
+    let todayEl = null;
+    $('#days').innerHTML = week.gunler.map(g => {
+      const end = g.tarihBitis || g.tarih;
+      const isToday = today >= g.tarih && today <= end;
+      const isPast = today > end;
+      const total = g.isler.length, n = g.isler.filter(t => durum.isler[t.id]?.tamam).length;
+      let badge = '';
+      if (isToday) badge = '<span class="badge today">Bugün</span>';
+      else if (total && n === total) badge = '<span class="badge done">Bitti</span>';
+      else if (isPast && n < total) badge = `<span class="badge left">${total-n} kaldı</span>`;
+      return `<article class="day${isToday?' today':''}${isPast?' past':''}" id="day-${esc(g.id)}">
+        <div class="dayhead"><div class="dayname">${esc(g.ad)}</div><div>${badge} <span class="daydate">${fmtDate(g.tarih, g.tarihBitis)}</span></div></div>
+        <div class="forline"><b>${esc(g.icin)}</b> için hazırlık</div>
+        ${total ? g.isler.map(taskHtml).join('') : `<div class="empty">${esc(g.bosNot || 'Yarın için bir şey yok. 🎉')}</div>`}
+      </article>`;
+    }).join('');
+    const hb = week.haftaBoyu || [];
+    $('#weekly').hidden = !hb.length;
+    $('#weeklyList').innerHTML = hb.map(taskHtml).join('');
+    const all = allTasks(), done = all.filter(t => durum.isler[t.id]?.tamam).length;
+    $('#barfill').style.width = all.length ? (done/all.length*100)+'%' : '0';
+    $('#pct').textContent = `${done} / ${all.length}`;
+    $('#notice').classList.toggle('show', !token);
+    $('#foot').textContent = week.kaynak ? 'Kaynak: ' + week.kaynak : '';
+  }
+
+  // ---------- actions ----------
+  let saveChain = Promise.resolve();
+  function saveDurum(taskId) {
+    saveChain = saveChain.then(async () => {
+      for (let i = 0; i < 4; i++) {
+        try {
+          const latest = await getJson(`data/${weekId}/durum.json`);
+          const merged = latest.data || { isler:{} }; merged.isler ||= {};
+          merged.isler[taskId] = durum.isler[taskId] || { tamam:false };
+          merged.guncelleme = new Date().toISOString();
+          const res = await putFile(`data/${weekId}/durum.json`, b64utf8(JSON.stringify(merged, null, 2)),
+            `${taskId}: ${merged.isler[taskId].tamam ? 'tamamlandı' : 'geri alındı'}`, latest.sha);
+          durumSha = res.content.sha;
+          for (const k in merged.isler) if (k !== taskId) durum.isler[k] = merged.isler[k];
+          render();
+          return;
+        } catch (e) {
+          if ((e.status === 409 || e.status === 422) && i < 3) continue;
+          toast('Kaydedilemedi, internet bağlantını kontrol et', true);
+          return;
+        }
+      }
+    });
+  }
+
+  function toggle(id) {
+    if (!token) { openSettings(); return; }
+    const t = allTasks().find(x => x.id === id);
+    const now = !durum.isler[id]?.tamam;
+    durum.isler[id] = now ? { tamam:true, zaman:new Date().toISOString() } : { tamam:false };
+    render();
+    if (now) toast(t?.foto && !(fotolar[id]||[]).length ? 'Aferin! Fotoğrafını eklemeyi unutma 📷' : 'Aferin Kuzey! 🎉');
+    saveDurum(id);
+  }
+
+  async function compress(file) {
+    const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = URL.createObjectURL(file); });
+    const max = 1800, s = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+    const c = document.createElement('canvas'); c.width = Math.round(img.naturalWidth*s); c.height = Math.round(img.naturalHeight*s);
+    c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+    URL.revokeObjectURL(img.src);
+    return c.toDataURL('image/jpeg', 0.82);
+  }
+
+  async function uploadPhoto(taskId, file) {
+    let dataUrl;
+    try { dataUrl = await compress(file); } catch { toast('Fotoğraf açılamadı', true); return; }
+    const p = new Date(), z = n => String(n).padStart(2,'0');
+    const name = `${taskId}__${p.getFullYear()}${z(p.getMonth()+1)}${z(p.getDate())}-${z(p.getHours())}${z(p.getMinutes())}${z(p.getSeconds())}.jpg`;
+    const entry = { name, url:dataUrl, uploading:true };
+    (fotolar[taskId] ||= []).push(entry); render();
+    try {
+      await putFile(`data/${weekId}/foto/${name}`, dataUrl.split(',')[1], `${taskId}: fotoğraf eklendi`);
+      entry.uploading = false; render(); toast('Fotoğraf yüklendi 👍');
+    } catch {
+      fotolar[taskId] = fotolar[taskId].filter(x => x !== entry); render();
+      toast('Fotoğraf yüklenemedi, tekrar dene', true);
+    }
+  }
+
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-act]'); if (!b) return;
+    const id = b.closest('.task')?.dataset.id; if (!id) return;
+    if (b.dataset.act === 'toggle') toggle(id);
+    if (b.dataset.act === 'photo') {
+      if (!token) { openSettings(); return; }
+      pendingTask = id; $('#file').value = ''; $('#file').click();
+    }
+  });
+  $('#file').addEventListener('change', e => { const f = e.target.files[0]; if (f && pendingTask) uploadPhoto(pendingTask, f); });
+
+  // ---------- settings ----------
+  function openSettings(){ $('#tokenInput').value = token; $('#tokenStatus').textContent=''; $('#settings').showModal(); }
+  $('#gear').onclick = openSettings; $('#noticeBtn').onclick = openSettings;
+  $('#tokenClose').onclick = () => $('#settings').close();
+  $('#tokenClear').onclick = () => { token=''; store.del(TOKEN_KEY); $('#tokenInput').value=''; $('#tokenStatus').textContent='Anahtar silindi.'; $('#tokenStatus').className='status'; render(); };
+  $('#tokenSave').onclick = async () => {
+    const v = $('#tokenInput').value.trim(); const st = $('#tokenStatus');
+    if (!v) { st.textContent='Anahtar boş.'; st.className='status err'; return; }
+    st.textContent='Deneniyor…'; st.className='status';
+    try {
+      const r = await fetch(API, { headers:{ Authorization:`Bearer ${v}`, Accept:'application/vnd.github+json' } });
+      const j = await r.json();
+      if (!r.ok) throw new Error();
+      if (!j.permissions?.push) { st.textContent='Anahtar çalışıyor ama yazma izni yok. "Contents: Read and write" izni verilmeli.'; st.className='status err'; return; }
+      token = v; store.set(TOKEN_KEY, v); st.textContent='Tamam! Bu cihaz artık kaydedebilir.'; st.className='status ok'; render();
+      setTimeout(()=>$('#settings').close(), 900);
+    } catch { st.textContent='Anahtar geçersiz ya da bu depoya erişimi yok.'; st.className='status err'; }
+  };
+
+  // ---------- boot ----------
+  (async () => {
+    try {
+      const idx = await loadIndex();
+      const sel = $('#weekpick');
+      sel.innerHTML = idx.haftalar.map(h => `<option value="${esc(h.id)}">${esc(h.baslik)}</option>`).join('');
+      const fromHash = location.hash.slice(1);
+      const id = idx.haftalar.some(h => h.id === fromHash) ? fromHash : idx.guncel;
+      sel.value = id; sel.hidden = idx.haftalar.length < 2;
+      sel.onchange = () => { location.hash = sel.value; loadWeek(sel.value); };
+      await loadWeek(id);
+      const t = document.querySelector('.day.today');
+      if (t && window.innerWidth < 700) t.scrollIntoView({ behavior:'smooth', block:'start' });
+    } catch (e) { $('#days').innerHTML = '<div class="empty">Hafta yüklenemedi. Sayfayı yenile.</div>'; }
+  })();
+})();
+</script>
+</body>
+</html>
