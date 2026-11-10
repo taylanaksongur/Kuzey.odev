@@ -4,7 +4,7 @@ GitHub Pages ile yayınlanan tek sayfalık site (`index.html`). Kuzey (4E, Bahç
 
 ## Yapı
 - `weeks/index.json` — hafta listesi, `guncel` gösterilecek hafta (Pazartesi tarihi, `YYYY-MM-DD`).
-- `weeks/<pazartesi>.json` — o haftanın işleri. **Kural:** bir işin teslim/gerektiği günden bir ÖNCEKİ günün kartına yazılır (Pazartesi teslimi → Pazar kartı, Cuma malzemesi → Perşembe kartı, hafta sonu ödevleri → "Hafta sonu" kartı). Teslim günü olmayanlar `haftaBoyu`'na.
+- `weeks/<pazartesi>.json` — o haftanın işleri. **Kural:** ödevler ait oldukları günün kartına yazılır (Pazartesi ödevi → Pazartesi kartı, hafta sonu ödevleri → "Hafta sonu" kartı). Okula götürülecek şeyler (`tur: "getir"`, `icin: "<gün>"`) gerektiği günden bir ÖNCEKİ günün kartına yazılır (Pazartesi tableti → Pazar, Cuma malzemesi → Perşembe). Belirli günü olmayanlar `haftaBoyu`'na.
   - İş alanları: `id` (hafta içinde benzersiz), `tur` (`odev` | `getir` | `okuma` | `hatirlat`), `ders`, `baslik`, `detay?`, `foto?` (fotoğraf istenecekse `true`).
 - `data/<pazartesi>/durum.json` — sayfanın yazdığı işaretler `{ isler: { <id>: { tamam, zaman } } }`.
 - `data/<pazartesi>/foto/<id>__<YYYYMMDD-HHMMSS>.jpg` — Kuzey'in yüklediği fotoğraflar.

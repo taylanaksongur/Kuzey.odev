@@ -272,7 +272,7 @@ dialog::backdrop{background:#1c233199}
       <div class="trow">
         <button class="check" data-act="toggle" aria-label="${done?'Geri al':'Tamamladım'}">${done?'✓':''}</button>
         <div class="tmain">
-          <div class="tmeta"><span class="ders">${esc(t.ders)}</span><span class="kind ${esc(t.tur)}">${esc(TUR_AD[t.tur]||'')}</span></div>
+          <div class="tmeta"><span class="ders">${esc(t.ders)}</span><span class="kind ${esc(t.tur)}">${esc(TUR_AD[t.tur]||'')}${t.tur==='getir' && t.icin ? ' · ' + esc(t.icin) + ' için' : ''}</span></div>
           <div class="ttitle">${esc(t.baslik)}</div>
           ${t.detay ? `<div class="tdetail">${esc(t.detay)}</div>` : ''}
         </div>
@@ -301,8 +301,7 @@ dialog::backdrop{background:#1c233199}
       else if (isPast && n < total) badge = `<span class="badge left">${total-n} kaldı</span>`;
       return `<article class="day${isToday?' today':''}${isPast?' past':''}" id="day-${esc(g.id)}">
         <div class="dayhead"><div class="dayname">${esc(g.ad)}</div><div>${badge} <span class="daydate">${fmtDate(g.tarih, g.tarihBitis)}</span></div></div>
-        <div class="forline"><b>${esc(g.icin)}</b> için hazırlık</div>
-        ${total ? g.isler.map(taskHtml).join('') : `<div class="empty">${esc(g.bosNot || 'Yarın için bir şey yok. 🎉')}</div>`}
+        ${total ? g.isler.map(taskHtml).join('') : `<div class="empty">${esc(g.bosNot || 'Bugün için bir şey yok. 🎉')}</div>`}
       </article>`;
     }).join('');
     const hb = week.haftaBoyu || [];
