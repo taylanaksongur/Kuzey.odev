@@ -6,7 +6,11 @@
     },
     "pz-fen": {
       "tamam": false
+    },
+    "pz-turkce": {
+      "tamam": true,
+      "zaman": "2026-11-10T16:44:20.840Z"
     }
   },
-  "guncelleme": "2026-11-10T16:44:16.857Z"
+  "guncelleme": "2026-11-10T16:44:21.361Z"
 }
