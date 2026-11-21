@@ -1,0 +1,79 @@
+{
+  "hafta": "2026-11-23",
+  "baslik": "23 – 27 Kasım",
+  "kaynak": "Rübeyda Adak – 4. Sınıf 23-27 Kasım Haftalık Öğretim Takvimi; Suzan Uytan – Sosyal Bilgiler Millî Mücadele soru çalışması",
+  "gunler": [
+    {
+      "id": "pazar",
+      "ad": "Pazar",
+      "tarih": "2026-11-22",
+      "bosNot": "Yarın okul başlıyor. Çantanı hazırla!",
+      "isler": []
+    },
+    {
+      "id": "pazartesi",
+      "ad": "Pazartesi",
+      "tarih": "2026-11-23",
+      "isler": [
+        { "id": "pz-turkce", "tur": "odev", "ders": "Türkçe", "baslik": "Başarıyorum 1 – syf. 105", "detay": "Yardımcı Eğitim Materyali 1", "foto": true },
+        { "id": "pz-fen", "tur": "odev", "ders": "Fen Bilimleri", "baslik": "Başarıyorum 1 – syf. 53 ve 54", "detay": "Yardımcı Eğitim Materyali 1", "foto": true },
+        { "id": "pz-okuma", "tur": "okuma", "ders": "Okuma", "baslik": "Okuma Kitabı: Hızlı Okuyan Kurtçuk" }
+      ]
+    },
+    {
+      "id": "sali",
+      "ad": "Salı",
+      "tarih": "2026-11-24",
+      "isler": [
+        { "id": "sa-ing-pb", "tur": "odev", "ders": "İngilizce", "baslik": "Practice Book – syf. 21-22", "foto": true },
+        { "id": "sa-ing-hl", "tur": "okuma", "ders": "İngilizce", "baslik": "Highlights: Seeing New Things, Guess My Riddle" }
+      ]
+    },
+    {
+      "id": "carsamba",
+      "ad": "Çarşamba",
+      "tarih": "2026-11-25",
+      "isler": [
+        { "id": "ca-tablet", "tur": "getir", "icin": "Perşembe", "ders": "Robotik ve Kodlama", "baslik": "Tablet", "detay": "Döngü-karar yapıları tekrar edilecek. (Ders günü takvimde yazmıyor; geçen haftaki gibi Perşembe varsayıldı.)" }
+      ]
+    },
+    {
+      "id": "persembe",
+      "ad": "Perşembe",
+      "tarih": "2026-11-26",
+      "isler": [
+        { "id": "pe-mat-pc", "tur": "odev", "ders": "Matematik", "baslik": "Problem Çözme – syf. 19", "foto": true },
+        { "id": "pe-mat-bas", "tur": "odev", "ders": "Matematik", "baslik": "Başarıyorum 1 – syf. 59 ve 60", "foto": true },
+        { "id": "pe-sosyal", "tur": "odev", "ders": "Sosyal Bilgiler", "baslik": "Morpa Kampüs – Nerede Yaşıyorum", "detay": "Morpa Kampüs > Dersler > Sosyal Bilgiler > İnsanlar, Yerler ve Çevreler > Nerede Yaşıyorum bölümündeki \"çalışmalar\" kısmı.", "foto": true },
+        { "id": "pe-gorsel", "tur": "getir", "icin": "Cuma", "ders": "Görsel Sanatlar", "baslik": "Pastel boya, siyah karton (A4), makas, yapıştırıcı", "detay": "Konu: Derinlik ve Uzak-Yakın İlişkisi. Çizim kalemi, silgi ve kalemtıraş da gerekli. (Ders günü takvimde yazmıyor; geçen haftaki gibi Cuma varsayıldı.)" }
+      ]
+    },
+    {
+      "id": "cuma",
+      "ad": "Cuma",
+      "tarih": "2026-11-27",
+      "bosNot": "Bugün için ödev yok. Hafta boyu işlerini bitirmeye ne dersin?",
+      "isler": []
+    },
+    {
+      "id": "haftasonu",
+      "ad": "Hafta sonu",
+      "tarih": "2026-11-28",
+      "tarihBitis": "2026-11-29",
+      "isler": [
+        { "id": "hs-ev10", "tur": "odev", "ders": "Karma", "baslik": "Ev Çalışması 10", "detay": "Türkçe, Fen, Matematik, Sosyal Bilgiler", "foto": true },
+        { "id": "hs-mat-db", "tur": "odev", "ders": "Matematik", "baslik": "Düşünme Becerileri – syf. 8", "foto": true },
+        { "id": "hs-mat-pc", "tur": "odev", "ders": "Matematik", "baslik": "Problem Çözme – syf. 20", "foto": true },
+        { "id": "hs-mat-bas", "tur": "odev", "ders": "Matematik", "baslik": "Başarıyorum 1 – syf. 65", "foto": true },
+        { "id": "hs-ing-ww", "tur": "odev", "ders": "İngilizce", "baslik": "Weekend Worksheet 10", "foto": true },
+        { "id": "hs-alm", "tur": "odev", "ders": "Almanca", "baslik": "Hausaufgabe Nr. 4", "foto": true }
+      ]
+    }
+  ],
+  "haftaBoyu": [
+    { "id": "hb-fen", "tur": "odev", "ders": "Fen Bilimleri", "baslik": "Morpa Kampüs – Dengeli Beslenme", "detay": "4. Sınıf Morpa Kampüs > Dersler > Fen Bilimleri > 2. Ünite Besinlerimiz > Besinler ve Özellikleri > Dengeli Beslenme bölümündeki çalışmalar." },
+    { "id": "hb-almanca", "tur": "odev", "ders": "Almanca", "baslik": "KidzWonder HA.7", "foto": true },
+    { "id": "hb-stem", "tur": "odev", "ders": "STEM", "baslik": "\"Şerbet'in Uzay Yolu\" etkinlik kitabı", "detay": "Kitaptaki etkinlikler yapılır (Fikir Geliştirme Haftası)." },
+    { "id": "hb-sosyal-mm", "tur": "odev", "ders": "Sosyal Bilgiler", "baslik": "Millî Mücadele soru çalışması (41 soru)", "detay": "Suzan Öğretmen tatil için paylaştı. Okulda kâğıt dağıtıldıysa tekrar için çöz; önce ödev olup olmadığını öğretmene sor.", "foto": true }
+  ]
+}
